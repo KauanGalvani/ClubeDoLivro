@@ -61,7 +61,7 @@ namespace ClubeDoLivro.ConsoleApp
                         }
                         else if (opcaoMenuInterno == "4")
                         {
-                            telaCaixa.Visualizar();
+                             telaCaixa.Visualizar(deveExibirCabecalho: true);
                         }
                     }
 

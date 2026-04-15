@@ -64,7 +64,7 @@ public class RepositorioCaixa
 
     }
 
-    internal Caixa?[] SelecionarTodos()
+    public Caixa?[] SelecionarTodos()
     {
         return caixas;
     }

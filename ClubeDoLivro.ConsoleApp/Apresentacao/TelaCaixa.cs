@@ -156,9 +156,39 @@ public class TelaCaixa
         Console.ReadLine();
     }
 
-    public void Visualizar()
+    public void Visualizar(bool deveExibirCabecalho)
     {
-        throw new NotImplementedException();
+        ExibirCabecalho("Visualizar caixas");
+
+        if (deveExibirCabecalho)
+            ExibirCabecalho("Visualização de Caixas");
+
+        Console.WriteLine(
+            "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
+            "Id", "Etiqueta", "Cor", "Tempo de Empréstimo"
+        );
+
+        Caixa?[] caixas = repositorioCaixa.SelecionarTodos();
+
+        for (int i = 0; i < caixas.Length; i++)
+        {
+            Caixa? c = caixas[i];
+
+            if (c == null)
+                continue;
+
+            Console.WriteLine(
+                "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
+                c.Id, c.Etiqueta, c.Cor, c.DiasDeEmprestimo
+            );
+        }
+
+        if (deveExibirCabecalho)
+        {
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
+        }
     }
 
     public void ExibirCabecalho(string texto)
@@ -166,7 +196,7 @@ public class TelaCaixa
         Console.WriteLine("================================");
         Console.WriteLine("        Gestão de caixas        ");
         Console.WriteLine("================================");
-        Console.WriteLine($"        {texto}        ");
+        Console.WriteLine($"           {texto}             ");
         Console.WriteLine("================================");
     }
 
