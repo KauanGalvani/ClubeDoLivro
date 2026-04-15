@@ -1,11 +1,19 @@
 using System;
 using ClubeDoLivro.ConsoleApp.Dominio;
+using ClubeDoLivro.ConsoleApp.Infraestrutura;
 
 namespace ClubeDoLivro.ConsoleApp.Apresentacao;
 
 public class TelaCaixa
 {
+    private RepositorioCaixa repositorioCaixa;
+
+    public TelaCaixa(RepositorioCaixa rC)
+    {
+        repositorioCaixa = rC;
+    }
     public string? ObterOpcaoMenu()
+
     {
         Console.Clear();
         Console.WriteLine("================================");
@@ -53,8 +61,9 @@ public class TelaCaixa
 
         Caixa novaCaixa = new Caixa(etiqueta, cor, diasDeEmprestimo);
 
+        repositorioCaixa.Cadastrar(novaCaixa);
         Console.WriteLine("================================");
-        Console.WriteLine("A caixa foi cadastrada com sucesso!");
+        Console.WriteLine($"O registro {novaCaixa.Id} foi cadastrada com sucesso!");
         Console.WriteLine("================================");
         Console.WriteLine("  Digite ENTER para continuar   ");
         Console.WriteLine("================================");
