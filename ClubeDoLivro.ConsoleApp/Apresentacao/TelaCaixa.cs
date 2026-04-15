@@ -65,8 +65,6 @@ public class TelaCaixa
             );
         }
 
-        Console.WriteLine("==========================");
-
         string? idSelecionado;
 
         do
@@ -78,8 +76,6 @@ public class TelaCaixa
                 break;
 
         } while (true);
-
-        Console.WriteLine("==========================");
 
         Caixa novaCaixa = ObterDadosCadastrais();
 
@@ -121,8 +117,6 @@ public class TelaCaixa
             );
         }
 
-        Console.WriteLine("==========================");
-
         string? idSelecionado;
 
         do
@@ -135,23 +129,23 @@ public class TelaCaixa
 
         } while (true);
 
-        Console.WriteLine("==========================");
+
 
         bool conseguiuExcluir = repositorioCaixa.Excluir(idSelecionado);
 
         if (!conseguiuExcluir)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("=================================");
             Console.WriteLine("Não foi possível encontrar o registro requisitado.");
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("=================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
             return;
         }
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("=================================");
         Console.WriteLine($"O registro \"{idSelecionado}\" foi excluído com sucesso.");
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("=================================");
         Console.WriteLine("Digite ENTER para continuar...");
         Console.ReadLine();
     }
@@ -185,7 +179,7 @@ public class TelaCaixa
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("=================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
