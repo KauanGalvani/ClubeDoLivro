@@ -52,9 +52,12 @@ public class TelaCaixa
         int diasDeEmprestimo = Convert.ToInt32(Console.ReadLine());
 
         Caixa novaCaixa = new Caixa(etiqueta, cor, diasDeEmprestimo);
-        novaCaixa.Etiqueta = etiqueta;
-        novaCaixa.Cor = cor;
-        novaCaixa.DiasDeEmprestimo = diasDeEmprestimo;
+
+        Console.WriteLine("================================");
+        Console.WriteLine("A caixa foi cadastrada com sucesso!");
+        Console.WriteLine("================================");
+        Console.WriteLine("  Digite ENTER para continuar   ");
+        Console.WriteLine("================================");
     }
 
     public void Editar()
