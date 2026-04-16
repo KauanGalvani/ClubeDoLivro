@@ -1,6 +1,7 @@
-﻿using ClubeDoLivro.ConsoleApp.Apresentacao;
+﻿using ClubeDaLeitura.ConsoleApp.Apresentacao;
+using ClubeDoLivro.ConsoleApp.Apresentacao;
 using ClubeDoLivro.ConsoleApp.Dominio;
-using ClubeDoLivro.ConsoleApp.Infraestrutura;
+using ClubeDaLeitura.ConsoleApp.Infraestrutura;
 
 namespace ClubeDoLivro.ConsoleApp
 {
@@ -10,8 +11,10 @@ namespace ClubeDoLivro.ConsoleApp
         {
             //'Caixa caixaTeste = new Caixa();
             RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
+            RepositorioRevista repositorioRevista = new RepositorioRevista();
             TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
 
+            TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
             while (true)
             {
                 Console.Clear();
@@ -61,26 +64,39 @@ namespace ClubeDoLivro.ConsoleApp
                         }
                         else if (opcaoMenuInterno == "4")
                         {
-                             telaCaixa.Visualizar(deveExibirCabecalho: true);
+                            telaCaixa.Visualizar(deveExibirCabecalho: true);
                         }
                     }
 
                     else if (opcaoMenuPrincipal == "2")
                     {
-
+                        telaRevista.Cadastrar();
                     }
+                    else if (opcaoMenuInterno == "2")
+                    {
+                        telaRevista.Editar();
+                    }
+                    else if (opcaoMenuInterno == "3")
+                    {
+                        telaRevista.Excluir();
+                    }
+                    else if (opcaoMenuInterno == "4")
+                    {
+                        telaRevista.VisualizarTodos(deveExibirCabecalho: true);
+                    }
+                
 
                     else if (opcaoMenuPrincipal == "3")
-                    {
+                {
 
-                    }
+                }
 
-                    else if (opcaoMenuPrincipal == "4")
-                    {
+                else if (opcaoMenuPrincipal == "4")
+                {
 
-                    }
                 }
             }
         }
     }
+}
 }

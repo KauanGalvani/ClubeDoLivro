@@ -1,7 +1,8 @@
-using System;
+
+using ClubeDaLeitura.ConsoleApp.Dominio;
 using ClubeDoLivro.ConsoleApp.Dominio;
 
-namespace ClubeDoLivro.ConsoleApp.Infraestrutura;
+namespace ClubeDaLeitura.ConsoleApp.Infraestrutura;
 
 public class RepositorioCaixa
 {
@@ -19,27 +20,19 @@ public class RepositorioCaixa
         }
     }
 
+    public Caixa?[] SelecionarTodos()
+    {
+        return caixas;
+    }
+
     public bool Editar(string idSelecionado, Caixa novaCaixa)
     {
+        Caixa? caixaSelecionada = SelecionarPorId(idSelecionado);
 
-        Caixa? caixaSelecioonada = null;
-        for (int i = 0; i < caixas.Length; i++)
-        {
-            Caixa? c = caixas[i];
-
-            if (c == null) continue;
-
-            if (c.Id == idSelecionado)
-            {
-                caixaSelecioonada = c;
-                break;
-            }
-        }
-
-        if (caixaSelecioonada == null)
+        if (caixaSelecionada == null)
             return false;
 
-        caixaSelecioonada.AtualizarRegistro(novaCaixa);
+        caixaSelecionada.AtualizarRegistro(novaCaixa);
 
         return true;
     }
@@ -61,11 +54,26 @@ public class RepositorioCaixa
         }
 
         return false;
-
     }
 
-    public Caixa?[] SelecionarTodos()
+    public Caixa? SelecionarPorId(string idSelecionado)
     {
-        return caixas;
+        Caixa? caixaSelecionada = null;
+
+        for (int i = 0; i < caixas.Length; i++)
+        {
+            Caixa? c = caixas[i];
+
+            if (c == null)
+                continue;
+
+            if (c.Id == idSelecionado)
+            {
+                caixaSelecionada = c;
+                break;
+            }
+        }
+
+        return caixaSelecionada;
     }
 }
