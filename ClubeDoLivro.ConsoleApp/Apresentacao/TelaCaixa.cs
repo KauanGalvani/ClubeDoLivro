@@ -99,6 +99,28 @@ public class TelaCaixa
 
         Caixa novaCaixa = ObterDadosCadastrais();
 
+        string[] erros = novaCaixa.Validar();
+
+        if (erros.Length > 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            for (int i = 0; i < erros.Length; i++)
+            {
+                string erro = erros[i];
+
+                Console.WriteLine(erro);
+            }
+            Console.ResetColor();
+            Console.WriteLine("================================");
+            Console.WriteLine("  Digite ENTER para continuar   ");
+            Console.WriteLine("================================");
+            Console.ReadLine();
+
+            //recursão
+            Editar();
+            return;
+        }
+
         bool conseguiuEditar = repositorioCaixa.Editar(idSelecionado, novaCaixa);
 
         if (!conseguiuEditar)
@@ -174,7 +196,7 @@ public class TelaCaixa
     {
 
         if (deveExibirCabecalho)
-        ExibirCabecalho("Visualização de Caixas");
+            ExibirCabecalho("Visualização de Caixas");
 
         Console.WriteLine(
             "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
