@@ -29,4 +29,28 @@ public class Caixa
         Cor = caixaAtualizada.Cor;
         DiasDeEmprestimo = caixaAtualizada.DiasDeEmprestimo;
     }
+
+    public string[] Validar()
+    {
+        string erros = string.Empty;
+
+
+        if (string.IsNullOrWhiteSpace(Etiqueta))
+        {
+            erros += "O campo Etiqueta é obrigatorio;";
+
+        }
+        else if (Etiqueta.Length > 50)
+        {
+           erros += "O campo Etiqueta deve ter no maximo 50 caracteres;";
+
+        }
+
+        if (DiasDeEmprestimo < 1)
+        {
+            erros += "o campo Dias de imprestimo esta invalido;";
+        }
+
+        return erros.Split(';', StringSplitOptions.RemoveEmptyEntries);
+    }
 }

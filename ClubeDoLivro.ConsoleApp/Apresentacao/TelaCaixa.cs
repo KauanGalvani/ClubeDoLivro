@@ -35,9 +35,29 @@ public class TelaCaixa
     {
         ExibirCabecalho("Cadastrar Caixa");
 
-
-
         Caixa novaCaixa = ObterDadosCadastrais();
+
+        string[] erros = novaCaixa.Validar();
+
+        if (erros.Length > 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            for (int i = 0; i < erros.Length; i++)
+            {
+                string erro = erros[i];
+
+                Console.WriteLine(erro);
+            }
+            Console.ResetColor();
+            Console.WriteLine("================================");
+            Console.WriteLine("  Digite ENTER para continuar   ");
+            Console.WriteLine("================================");
+            Console.ReadLine();
+
+            //recursão
+            Cadastrar();
+            return;
+        }
 
         repositorioCaixa.Cadastrar(novaCaixa);
         Console.WriteLine("================================");
@@ -152,10 +172,9 @@ public class TelaCaixa
 
     public void Visualizar(bool deveExibirCabecalho)
     {
-        ExibirCabecalho("Visualizar caixas");
 
         if (deveExibirCabecalho)
-            ExibirCabecalho("Visualização de Caixas");
+        ExibirCabecalho("Visualização de Caixas");
 
         Console.WriteLine(
             "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
@@ -190,7 +209,7 @@ public class TelaCaixa
         Console.WriteLine("================================");
         Console.WriteLine("        Gestão de caixas        ");
         Console.WriteLine("================================");
-        Console.WriteLine($"           {texto}             ");
+        Console.WriteLine($"{texto}             ");
         Console.WriteLine("================================");
     }
 
