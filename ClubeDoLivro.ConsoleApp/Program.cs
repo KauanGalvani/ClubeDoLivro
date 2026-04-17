@@ -16,16 +16,13 @@ namespace ClubeDoLivro.ConsoleApp
 
             TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
             telaCaixa.nomeEntidade = "Caixa";
+
             TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
             telaRevista.nomeEntidade = "Revista";
 
             Caixa caixa = new Caixa("Lançameto", "Vermelho", 3);
 
             Revista revista = new Revista("Comics Animation", 324, 1999, caixa);
-
-            EntidadeBase entidade = caixa;
-
-            entidade.AtualizarRegistro(revista);
 
             while (true)
             {
