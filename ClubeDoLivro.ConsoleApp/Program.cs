@@ -2,6 +2,7 @@
 using ClubeDoLivro.ConsoleApp.Apresentacao;
 using ClubeDoLivro.ConsoleApp.Dominio;
 using ClubeDaLeitura.ConsoleApp.Infraestrutura;
+using ClubeDaLeitura.ConsoleApp.Dominio;
 
 namespace ClubeDoLivro.ConsoleApp
 {
@@ -12,9 +13,18 @@ namespace ClubeDoLivro.ConsoleApp
             //'Caixa caixaTeste = new Caixa();
             RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
             RepositorioRevista repositorioRevista = new RepositorioRevista();
-            TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
 
+            TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
             TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
+
+            Caixa caixa = new Caixa("Lançameto", "Vermelho", 3); 
+
+            Revista revista = new Revista("Comics Animation", 324, 1999, caixa);
+
+            EntidadeBase entidade = caixa;
+
+            entidade.AtualizarRegistro(revista);
+
             while (true)
             {
                 Console.Clear();

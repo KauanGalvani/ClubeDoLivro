@@ -1,12 +1,10 @@
 using System;
-using System.Security.Cryptography;
 using ClubeDoLivro.ConsoleApp.Dominio;
 
 namespace ClubeDaLeitura.ConsoleApp.Dominio;
 
-public class Revista
+public class Revista : EntidadeBase
 {
-    public string Id { get; set; }
     public string Titulo { get; set; }
     public int NumeroEdicao { get; set; }
     public int AnoPublicacao { get; set; }
@@ -14,11 +12,6 @@ public class Revista
 
     public Revista(string titulo, int numeroEdicao, int anoPublicacao, Caixa caixa)
     {
-        Id = Convert
-                .ToHexString(RandomNumberGenerator.GetBytes(20))
-                .ToLower()
-                .Substring(0, 7);
-
         Titulo = titulo;
         NumeroEdicao = numeroEdicao;
         AnoPublicacao = anoPublicacao;
@@ -49,11 +42,12 @@ public class Revista
         return erros.Split(';', StringSplitOptions.RemoveEmptyEntries);
     }
 
-    public void AtualizarRegistro(Revista novaRevista)
+    public override void AtualizarRegistro(EntidadeBase entidadeAtualizada)
     {
-        Titulo = novaRevista.Titulo;
-        NumeroEdicao = novaRevista.NumeroEdicao;
-        AnoPublicacao = novaRevista.AnoPublicacao;
-        Caixa = novaRevista.Caixa;
+        Revista revistaAtualizada = (Revista)entidadeAtualizada; // cast  / conversao de tipo
+        Titulo = revistaAtualizada.Titulo;
+        NumeroEdicao = revistaAtualizada.NumeroEdicao;
+        AnoPublicacao = revistaAtualizada.AnoPublicacao;
+        Caixa = revistaAtualizada.Caixa;
     }
 }

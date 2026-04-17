@@ -2,7 +2,6 @@ using System;
 using ClubeDaLeitura.ConsoleApp.Dominio;
 using ClubeDaLeitura.ConsoleApp.Infraestrutura;
 using ClubeDoLivro.ConsoleApp.Dominio;
-using ClubeDaLeitura.ConsoleApp.Infraestrutura;
 
 namespace ClubeDaLeitura.ConsoleApp.Apresentacao;
 
@@ -94,11 +93,11 @@ public class TelaRevista
             "Id", "Título", "Edição", "Ano", "Caixa"
         );
 
-        Revista?[] revistas = repositorioRevista.SelecionarTodas();
+        EntidadeBase?[] revistas = repositorioRevista.SelecionarTodos();
 
         for (int i = 0; i < revistas.Length; i++)
         {
-            Revista? r = revistas[i];
+            Revista? r = (Revista?)revistas[i];
 
             if (r == null)
                 continue;
@@ -166,9 +165,9 @@ public class TelaRevista
         // Visualizar as Caixas disponívels
         string idSelecionado = SelecionarCaixa();
 
-        Caixa? caixaSelecionada = repositorioCaixa.SelecionarPorId(idSelecionado);
+        EntidadeBase? caixaSelecionada = repositorioCaixa.SelecionarPorId(idSelecionado);
 
-        return new Revista(titulo, numeroEdicao, anoPublicacao, caixaSelecionada);
+        return new Revista(titulo, numeroEdicao, anoPublicacao, (Caixa)caixaSelecionada);
     }
 
     private string SelecionarCaixa()
@@ -180,11 +179,11 @@ public class TelaRevista
           "Id", "Etiqueta", "Cor", "Tempo de Empréstimo"
       );
 
-        Caixa?[] caixas = repositorioCaixa.SelecionarTodos();
+        EntidadeBase?[] caixas = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < caixas.Length; i++)
         {
-            Caixa? c = caixas[i];
+            Caixa? c = (Caixa?)caixas[i];
 
             if (c == null)
                 continue;

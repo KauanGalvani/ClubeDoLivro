@@ -1,7 +1,7 @@
 using System;
 using ClubeDaLeitura.ConsoleApp.Infraestrutura;
 using ClubeDoLivro.ConsoleApp.Dominio;
-using ClubeDaLeitura.ConsoleApp.Infraestrutura;
+
 
 namespace ClubeDoLivro.ConsoleApp.Apresentacao;
 
@@ -72,11 +72,11 @@ public class TelaCaixa
     public void Editar()
     {
         ExibirCabecalho("Edição da caixa");
-        Caixa?[] caixas = repositorioCaixa.SelecionarTodos();
+        EntidadeBase?[] caixas = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < caixas.Length; i++)
         {
-            Caixa? c = caixas[i];
+            Caixa? c = (Caixa?)caixas[i];
 
             if (c == null) continue;
 
@@ -146,11 +146,11 @@ public class TelaCaixa
 
     public void Excluir()
     {
-        Caixa?[] caixas = repositorioCaixa.SelecionarTodos();
+        EntidadeBase?[] caixas = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < caixas.Length; i++)
         {
-            Caixa? c = caixas[i];
+            Caixa? c = (Caixa?)caixas[i];
 
             if (c == null) continue;
 
@@ -204,11 +204,11 @@ public class TelaCaixa
             "Id", "Etiqueta", "Cor", "Tempo de Empréstimo"
         );
 
-        Caixa?[] caixas = repositorioCaixa.SelecionarTodos();
+        EntidadeBase?[] caixas = repositorioCaixa.SelecionarTodos();
 
         for (int i = 0; i < caixas.Length; i++)
         {
-            Caixa? c = caixas[i];
+            Caixa? c = (Caixa?)caixas[i];
 
             if (c == null)
                 continue;
