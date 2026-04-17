@@ -18,7 +18,7 @@ public class Revista : EntidadeBase
         Caixa = caixa;
     }
 
-    public string[] Validar()
+    public override string[] Validar()
     {
         string erros = string.Empty;
 

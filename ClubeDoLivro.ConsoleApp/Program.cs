@@ -15,9 +15,11 @@ namespace ClubeDoLivro.ConsoleApp
             RepositorioRevista repositorioRevista = new RepositorioRevista();
 
             TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
+            telaCaixa.nomeEntidade = "Caixa";
             TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
+            telaRevista.nomeEntidade = "Revista";
 
-            Caixa caixa = new Caixa("Lançameto", "Vermelho", 3); 
+            Caixa caixa = new Caixa("Lançameto", "Vermelho", 3);
 
             Revista revista = new Revista("Comics Animation", 324, 1999, caixa);
 
@@ -74,7 +76,7 @@ namespace ClubeDoLivro.ConsoleApp
                         }
                         else if (opcaoMenuInterno == "4")
                         {
-                            telaCaixa.Visualizar(deveExibirCabecalho: true);
+                            telaCaixa.VisualizarTodos(deveExibirCabecalho: true);
                         }
                     }
 
@@ -94,19 +96,19 @@ namespace ClubeDoLivro.ConsoleApp
                     {
                         telaRevista.VisualizarTodos(deveExibirCabecalho: true);
                     }
-                
+
 
                     else if (opcaoMenuPrincipal == "3")
-                {
+                    {
 
-                }
+                    }
 
-                else if (opcaoMenuPrincipal == "4")
-                {
+                    else if (opcaoMenuPrincipal == "4")
+                    {
 
+                    }
                 }
             }
         }
     }
-}
 }

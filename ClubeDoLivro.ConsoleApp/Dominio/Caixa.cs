@@ -23,7 +23,7 @@ public class Caixa : EntidadeBase //herança
         DiasDeEmprestimo = caixaAtualizada.DiasDeEmprestimo;
     }
 
-    public string[] Validar()
+    public override string[] Validar()
     {
         string erros = string.Empty;
 

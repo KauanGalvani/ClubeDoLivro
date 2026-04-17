@@ -3,7 +3,7 @@ using ClubeDoLivro.ConsoleApp.Dominio;
 
 namespace ClubeDoLivro.ConsoleApp.Infraestrutura;
 
-public class RepositorioBase
+public abstract class RepositorioBase
 {
     protected EntidadeBase?[] registros = new EntidadeBase[100];
 
