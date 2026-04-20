@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Apresentacao\" />
     <Folder Include="Dominio\" />
+    <Folder Include="Dominio\Base\" />
     <Folder Include="Infraestrutura\" />
   </ItemGroup>
 

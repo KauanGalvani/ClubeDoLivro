@@ -24,6 +24,8 @@ namespace ClubeDoLivro.ConsoleApp
 
             Revista revista = new Revista("Comics Animation", 324, 1999, caixa);
 
+            Amigo amigo = new Amigo("Joao", "Maria", "4999876678");
+
             while (true)
             {
                 Console.Clear();
