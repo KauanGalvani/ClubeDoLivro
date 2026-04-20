@@ -3,6 +3,7 @@ using ClubeDoLivro.ConsoleApp.Apresentacao;
 using ClubeDoLivro.ConsoleApp.Dominio;
 using ClubeDaLeitura.ConsoleApp.Infraestrutura;
 using ClubeDaLeitura.ConsoleApp.Dominio;
+using ClubeDoLivro.ConsoleApp.Infraestrutura;
 
 namespace ClubeDoLivro.ConsoleApp
 {
@@ -13,18 +14,20 @@ namespace ClubeDoLivro.ConsoleApp
             //'Caixa caixaTeste = new Caixa();
             RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
             RepositorioRevista repositorioRevista = new RepositorioRevista();
+            RepositorioAmigo repositorioamigo = new RepositorioAmigo();
 
             TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
             telaCaixa.nomeEntidade = "Caixa";
 
             TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
             telaRevista.nomeEntidade = "Revista";
+            TelaAmigo telaAmigo = new TelaAmigo(repositorioamigo);
 
             Caixa caixa = new Caixa("Lançameto", "Vermelho", 3);
-
             Revista revista = new Revista("Comics Animation", 324, 1999, caixa);
-
             Amigo amigo = new Amigo("Joao", "Maria", "4999876678");
+
+            repositorioamigo.Cadastrar(amigo);
 
             while (true)
             {
@@ -61,45 +64,27 @@ namespace ClubeDoLivro.ConsoleApp
                             break;
                         }
 
-                        if (opcaoMenuInterno == "1")
-                        {
-                            telaCaixa.Cadastrar();
-                        }
-                        else if (opcaoMenuInterno == "2")
-                        {
-                            telaCaixa.Editar();
-                        }
-                        else if (opcaoMenuInterno == "3")
-                        {
-                            telaCaixa.Excluir();
-                        }
-                        else if (opcaoMenuInterno == "4")
-                        {
-                            telaCaixa.VisualizarTodos(deveExibirCabecalho: true);
-                        }
+                        if (opcaoMenuInterno == "1") telaCaixa.Cadastrar();
+                        else if (opcaoMenuInterno == "2") telaCaixa.Editar();
+                        else if (opcaoMenuInterno == "3") telaCaixa.Excluir();
+                        else if (opcaoMenuInterno == "4") telaCaixa.VisualizarTodos(deveExibirCabecalho: true);
+
                     }
 
                     else if (opcaoMenuPrincipal == "2")
                     {
-                        telaRevista.Cadastrar();
+                        if (opcaoMenuInterno == "1") telaRevista.Cadastrar();
+                        else if (opcaoMenuInterno == "2") telaRevista.Editar();
+                        else if (opcaoMenuInterno == "3") telaRevista.Excluir();
+                        else if (opcaoMenuInterno == "4") telaRevista.VisualizarTodos(deveExibirCabecalho: true);
                     }
-                    else if (opcaoMenuInterno == "2")
-                    {
-                        telaRevista.Editar();
-                    }
-                    else if (opcaoMenuInterno == "3")
-                    {
-                        telaRevista.Excluir();
-                    }
-                    else if (opcaoMenuInterno == "4")
-                    {
-                        telaRevista.VisualizarTodos(deveExibirCabecalho: true);
-                    }
-
 
                     else if (opcaoMenuPrincipal == "3")
                     {
-
+                        if (opcaoMenuInterno == "1") telaAmigo.Cadastrar();
+                        else if (opcaoMenuInterno == "2") telaAmigo.Editar();
+                        else if (opcaoMenuInterno == "3") telaAmigo.Excluir();
+                        else if (opcaoMenuInterno == "4") telaAmigo.VisualizarTodos(deveExibirCabecalho: true);
                     }
 
                     else if (opcaoMenuPrincipal == "4")
