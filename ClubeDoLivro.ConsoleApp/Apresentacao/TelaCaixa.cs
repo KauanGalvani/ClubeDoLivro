@@ -54,7 +54,7 @@ public class TelaCaixa : TelaBase
     protected override EntidadeBase ObterDadosCadastrais()
     {
         Console.Write("Informe a etiqueta da caixa: ");
-        string? etiqueta = Console.ReadLine();
+        string etiqueta = Console.ReadLine() ?? string.Empty;
 
         Console.WriteLine("================================");
         Console.WriteLine(" Selecione uma das cores validas");

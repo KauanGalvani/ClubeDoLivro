@@ -70,7 +70,7 @@ public class TelaRevista : TelaBase
     protected override Revista ObterDadosCadastrais()
     {
         Console.Write("Digite o título da revista: ");
-        string? titulo = Console.ReadLine();
+        string titulo = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o número da edição: ");
         int numeroEdicao = Convert.ToInt32(Console.ReadLine());

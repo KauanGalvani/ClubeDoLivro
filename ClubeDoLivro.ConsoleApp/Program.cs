@@ -31,7 +31,7 @@ namespace ClubeDoLivro.ConsoleApp
 
             while (true)
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine("================================");
                 Console.WriteLine("        Clube da Leitura        ");
                 Console.WriteLine("================================");
@@ -57,12 +57,6 @@ namespace ClubeDoLivro.ConsoleApp
                     if (opcaoMenuPrincipal == "1")
                     {
                         opcaoMenuInterno = telaCaixa.ObterOpcaoMenu();
-
-                        if (opcaoMenuInterno == "S")
-                        {
-                            Console.Clear();
-                            break;
-                        }
 
                         if (opcaoMenuInterno == "1") telaCaixa.Cadastrar();
                         else if (opcaoMenuInterno == "2") telaCaixa.Editar();
@@ -90,6 +84,12 @@ namespace ClubeDoLivro.ConsoleApp
                     else if (opcaoMenuPrincipal == "4")
                     {
 
+                    }
+
+                    else if (opcaoMenuInterno == "S")
+                    {
+                        Console.Clear();
+                        break;
                     }
                 }
             }
