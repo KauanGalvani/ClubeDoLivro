@@ -29,6 +29,8 @@ namespace ClubeDoLivro.ConsoleApp
 
             repositorioamigo.Cadastrar(amigo);
 
+            Emprestimo emprestimo = new Emprestimo(revista, amigo);
+
             while (true)
             {
                 Console.Clear();
