@@ -9,9 +9,11 @@
 
   <ItemGroup>
     <Folder Include="Apresentacao\" />
+    <Folder Include="Apresentacao\Base\" />
     <Folder Include="Dominio\" />
     <Folder Include="Dominio\Base\" />
     <Folder Include="Infraestrutura\" />
+    <Folder Include="Infraestrutura\Base\" />
   </ItemGroup>
 
 </Project>

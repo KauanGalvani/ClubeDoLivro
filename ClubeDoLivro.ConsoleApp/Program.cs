@@ -22,6 +22,7 @@ namespace ClubeDoLivro.ConsoleApp
             TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
             telaRevista.nomeEntidade = "Revista";
             TelaAmigo telaAmigo = new TelaAmigo(repositorioamigo);
+            TelaEmprestimo telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo, )
 
             Caixa caixa = new Caixa("Lançameto", "Vermelho", 3);
             Revista revista = new Revista("Comics Animation", 324, 1999, caixa);

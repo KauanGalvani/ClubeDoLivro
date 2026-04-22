@@ -17,7 +17,7 @@ public class TelaAmigo : TelaBase
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
-            ExibirCabecalho("Visualização de Caixas");
+            ExibirCabecalho("Visualização de Amigos");
 
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -15} | {3, -13}",

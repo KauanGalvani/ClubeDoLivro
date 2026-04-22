@@ -10,8 +10,19 @@ public class Emprestimo
     public string Id { get; set; } = string.Empty;
     public Revista Revista { get; set; }
     public Amigo Amigo { get; set; }
-    public DateTime Inicio { get; set; } // 01/01/0001 00:00:00
-    public DateTime Devolucao { get; set; }
+    public DateTime Abertura { get; set; } // propriedade autoimplementada
+    public DateTime Conclusao
+    {
+        get
+        {
+            //encapsular essa logica de conclusão prevista
+            int diasDeEmprestimo = Revista.Caixa.DiasDeEmprestimo;
+
+            // variavel a esquerda == Escrita - set
+            DateTime conclusao = Abertura.AddDays(diasDeEmprestimo);
+            return conclusao;
+        }
+    }
     public StatusEmprestimo Status { get; set; } = StatusEmprestimo.indefinido;
 
     public Emprestimo(Revista revista, Amigo amigo)
@@ -36,5 +47,15 @@ public class Emprestimo
             erros = "O campo Amigo deve ser preenchido";
 
         return erros.Split(';', StringSplitOptions.RemoveEmptyEntries);
+    }
+
+    public void Abrir()
+    {
+        Abertura = DateTime.Now;
+
+        Status = StatusEmprestimo.Aberto;
+        Revista.Emprestar();
+
+        Amigo.AdicionarEmprestimo(this);
     }
 }
