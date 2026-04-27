@@ -10,7 +10,19 @@ public class TelaEmprestimo
 {
 
     RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
-    private RepositorioRevista repositorioRevista;
+    private RepositorioRevista? repositorioRevista;
+    private RepositorioAmigo? repositorioAmigo;
+    public TelaEmprestimo(
+        RepositorioEmprestimo repositorioEmprestimo,
+        RepositorioRevista repositorioRevista,
+        RepositorioAmigo repositorioAmigo
+    )
+    {
+        this.repositorioEmprestimo = repositorioEmprestimo;
+        this.repositorioRevista = repositorioRevista;
+        this.repositorioAmigo = repositorioAmigo;
+    }
+
     public void Abrir()
     {
         Emprestimo emprestimo = ObeterDadosCadastrais();
@@ -45,6 +57,7 @@ public class TelaEmprestimo
         string? idSelecionado;
 
         Revista? revista = null;
+        Amigo? amigo = null;
         do
         {
             Console.Write("Digite o ID da caixa em que deseja guardar a revista: ");
@@ -100,7 +113,7 @@ public class TelaEmprestimo
 
     }
 
-    public override void VisualizarTodos()
+    public void VisualizarTodos()
     {
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -10} | {3, -10} | {4, -15} | {5, -10}",

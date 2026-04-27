@@ -15,6 +15,7 @@ namespace ClubeDoLivro.ConsoleApp
             RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
             RepositorioRevista repositorioRevista = new RepositorioRevista();
             RepositorioAmigo repositorioamigo = new RepositorioAmigo();
+            RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
 
             TelaCaixa telaCaixa = new TelaCaixa(repositorioCaixa);
             telaCaixa.nomeEntidade = "Caixa";
@@ -22,7 +23,7 @@ namespace ClubeDoLivro.ConsoleApp
             TelaRevista telaRevista = new TelaRevista(repositorioRevista, repositorioCaixa);
             telaRevista.nomeEntidade = "Revista";
             TelaAmigo telaAmigo = new TelaAmigo(repositorioamigo);
-            TelaEmprestimo telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo, )
+            TelaEmprestimo telaEmprestimo = new TelaEmprestimo(repositorioEmprestimo, repositorioRevista, repositorioamigo);
 
             Caixa caixa = new Caixa("Lançameto", "Vermelho", 3);
             Revista revista = new Revista("Comics Animation", 324, 1999, caixa);
