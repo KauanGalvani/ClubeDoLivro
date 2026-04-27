@@ -1,9 +1,9 @@
-using System;
+using ClubeDaLeitura.ConsoleApp.Apresentacao.Base;
+using ClubeDaLeitura.ConsoleApp.Dominio;
+using ClubeDaLeitura.ConsoleApp.Dominio.Base;
 using ClubeDaLeitura.ConsoleApp.Infraestrutura;
-using ClubeDoLivro.ConsoleApp.Dominio;
 
-
-namespace ClubeDoLivro.ConsoleApp.Apresentacao;
+namespace ClubeDaLeitura.ConsoleApp.Apresentacao;
 
 public class TelaCaixa : TelaBase
 {
@@ -14,12 +14,8 @@ public class TelaCaixa : TelaBase
         repositorioCaixa = rC;
     }
 
-
-
-
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
-
         if (deveExibirCabecalho)
             ExibirCabecalho("Visualização de Caixas");
 
@@ -37,15 +33,28 @@ public class TelaCaixa : TelaBase
             if (c == null)
                 continue;
 
+            string corSelecionada = c.Cor;
+
+            if (corSelecionada == "Vermelho")
+                Console.ForegroundColor = ConsoleColor.Red;
+
+            else if (corSelecionada == "Verde")
+                Console.ForegroundColor = ConsoleColor.Green;
+
+            else if (corSelecionada == "Azul")
+                Console.ForegroundColor = ConsoleColor.Blue;
+
             Console.WriteLine(
                 "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
                 c.Id, c.Etiqueta, c.Cor, c.DiasDeEmprestimo
             );
         }
 
+        Console.ResetColor();
+
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("=================================");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
@@ -54,27 +63,35 @@ public class TelaCaixa : TelaBase
     protected override EntidadeBase ObterDadosCadastrais()
     {
         Console.Write("Informe a etiqueta da caixa: ");
-        string? etiqueta = Console.ReadLine();
+        string etiqueta = Console.ReadLine() ?? string.Empty;
 
-        Console.WriteLine("================================");
-        Console.WriteLine(" Selecione uma das cores validas");
-        Console.WriteLine("================================");
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Selecione uma das cores válidas");
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("1 - Vermelho");
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("2 - Verde");
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("3 - Azul");
-        Console.WriteLine("4 - Braco (padrâo)");
+        Console.ResetColor();
+        Console.WriteLine("4 - Branco (Padrão)");
+        Console.WriteLine("---------------------------------");
 
         Console.Write("Informe a cor da caixa: ");
-        string? codigoCor = Console.ReadLine();
+        string codigoCor = Console.ReadLine() ?? string.Empty;
 
         string cor;
 
-        if (codigoCor == "1") cor = "Vermelho";
-        else if (codigoCor == "2") cor = "Verde";
-        else if (codigoCor == "3") cor = "Azul";
-        else cor = "Branco";
+        if (codigoCor == "1")
+            cor = "Vermelho";
+        else if (codigoCor == "2")
+            cor = "Verde";
+        else if (codigoCor == "3")
+            cor = "Azul";
+        else
+            cor = "Branco";
 
-        Console.Write("Informe o tempo de emprestimo das revistas da caixa: ");
+        Console.Write("Informe o tempo de empréstimo das revistas da caixa: ");
         int diasDeEmprestimo = Convert.ToInt32(Console.ReadLine());
 
         Caixa novaCaixa = new Caixa(etiqueta, cor, diasDeEmprestimo);

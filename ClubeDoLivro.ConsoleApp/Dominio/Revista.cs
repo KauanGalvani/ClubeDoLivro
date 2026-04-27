@@ -1,5 +1,4 @@
-using System;
-using ClubeDoLivro.ConsoleApp.Dominio;
+using ClubeDaLeitura.ConsoleApp.Dominio.Base;
 
 namespace ClubeDaLeitura.ConsoleApp.Dominio;
 
@@ -45,7 +44,8 @@ public class Revista : EntidadeBase
 
     public override void AtualizarRegistro(EntidadeBase entidadeAtualizada)
     {
-        Revista revistaAtualizada = (Revista)entidadeAtualizada; // cast  / conversao de tipo
+        Revista revistaAtualizada = (Revista)entidadeAtualizada;
+
         Titulo = revistaAtualizada.Titulo;
         NumeroEdicao = revistaAtualizada.NumeroEdicao;
         AnoPublicacao = revistaAtualizada.AnoPublicacao;
@@ -55,5 +55,10 @@ public class Revista : EntidadeBase
     public void Emprestar()
     {
         Status = StatusRevista.Emprestada;
+    }
+
+    public void Devolver()
+    {
+        Status = StatusRevista.Disponivel;
     }
 }

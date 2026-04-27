@@ -1,7 +1,4 @@
-using System;
-using ClubeDaLeitura.ConsoleApp.Dominio;
-using ClubeDoLivro.ConsoleApp.Dominio;
-using ClubeDoLivro.ConsoleApp.Infraestrutura;
+using ClubeDaLeitura.ConsoleApp.Infraestrutura.Base;
 
 namespace ClubeDaLeitura.ConsoleApp.Infraestrutura;
 

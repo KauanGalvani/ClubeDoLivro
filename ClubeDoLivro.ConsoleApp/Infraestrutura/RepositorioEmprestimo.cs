@@ -1,11 +1,11 @@
-using System;
-using ClubeDoLivro.ConsoleApp.Dominio;
+using ClubeDaLeitura.ConsoleApp.Dominio;
 
-namespace ClubeDoLivro.ConsoleApp.Infraestrutura;
+namespace ClubeDaLeitura.ConsoleApp.Infraestrutura;
 
 public class RepositorioEmprestimo
 {
     private Emprestimo?[] emprestimos = new Emprestimo[100];
+
     public void Cadastrar(Emprestimo emprestimo)
     {
         for (int i = 0; i < emprestimos.Length; i++)
@@ -21,5 +21,21 @@ public class RepositorioEmprestimo
     public Emprestimo?[] SelecionarTodos()
     {
         return emprestimos;
+    }
+
+    public Emprestimo? SelecionarPorId(string idSelecionado)
+    {
+        for (int i = 0; i < emprestimos.Length; i++)
+        {
+            Emprestimo? e = emprestimos[i];
+
+            if (e == null)
+                continue;
+
+            if (e.Id == idSelecionado)
+                return e;
+        }
+
+        return null;
     }
 }

@@ -1,15 +1,15 @@
-using System;
-using ClubeDoLivro.ConsoleApp.Dominio;
-using ClubeDoLivro.ConsoleApp.Infraestrutura;
+using ClubeDaLeitura.ConsoleApp.Apresentacao.Base;
+using ClubeDaLeitura.ConsoleApp.Dominio;
+using ClubeDaLeitura.ConsoleApp.Dominio.Base;
+using ClubeDaLeitura.ConsoleApp.Infraestrutura;
 
-namespace ClubeDoLivro.ConsoleApp.Apresentacao;
+namespace ClubeDaLeitura.ConsoleApp.Apresentacao;
 
 public class TelaAmigo : TelaBase
 {
-
     private RepositorioAmigo repositorioAmigo;
 
-    public TelaAmigo(RepositorioAmigo repositorioAmigo) : base("amigo", repositorioAmigo)
+    public TelaAmigo(RepositorioAmigo repositorioAmigo) : base("Amigo", repositorioAmigo)
     {
         this.repositorioAmigo = repositorioAmigo;
     }
@@ -21,27 +21,27 @@ public class TelaAmigo : TelaBase
 
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -15} | {3, -13}",
-            "Id", "Nome", "Responsavel", "Telefone"
+            "Id", "Nome", "Responsável", "Telefone"
         );
 
-        EntidadeBase?[] amigo = repositorioAmigo.SelecionarTodos();
+        EntidadeBase?[] amigos = repositorioAmigo.SelecionarTodos();
 
-        for (int i = 0; i < amigo.Length; i++)
+        for (int i = 0; i < amigos.Length; i++)
         {
-            Amigo? a = (Amigo?)amigo[i];
+            Amigo? a = (Amigo?)amigos[i];
 
             if (a == null)
                 continue;
 
             Console.WriteLine(
-                "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
+                "{0, -7} | {1, -15} | {2, -15} | {3, -13}",
                 a.Id, a.Nome, a.NomeResponsavel, a.Telefone
             );
         }
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("=================================");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
@@ -49,13 +49,13 @@ public class TelaAmigo : TelaBase
 
     protected override EntidadeBase ObterDadosCadastrais()
     {
-        Console.Write("");
-        string nome = Console.ReadLine() ?? string.Empty;
+        Console.Write("Digite o nome: ");
+        string nome = Console.ReadLine() ?? string.Empty; // null coalescing operator
 
-        Console.Write("");
+        Console.Write("Digite o nome do responsável: ");
         string nomeResponsavel = Console.ReadLine() ?? string.Empty;
 
-        Console.Write("");
+        Console.Write("Digite o telefone: ");
         string telefone = Console.ReadLine() ?? string.Empty;
 
         return new Amigo(nome, nomeResponsavel, telefone);

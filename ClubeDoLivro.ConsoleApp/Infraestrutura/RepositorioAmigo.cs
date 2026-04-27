@@ -1,6 +1,5 @@
-using System;
+using ClubeDaLeitura.ConsoleApp.Infraestrutura.Base;
 
-namespace ClubeDoLivro.ConsoleApp.Infraestrutura;
+namespace ClubeDaLeitura.ConsoleApp.Infraestrutura;
 
 public class RepositorioAmigo : RepositorioBase;
-

@@ -1,37 +1,31 @@
-using System;
-using ClubeDoLivro.ConsoleApp.Dominio;
+using ClubeDaLeitura.ConsoleApp.Dominio.Base;
 
-namespace ClubeDoLivro.ConsoleApp.Infraestrutura;
+namespace ClubeDaLeitura.ConsoleApp.Infraestrutura.Base;
 
 public abstract class RepositorioBase
 {
     protected EntidadeBase?[] registros = new EntidadeBase[100];
 
-    public void Cadastrar(EntidadeBase novaEntidadeBase)
+    public void Cadastrar(EntidadeBase entidade)
     {
         for (int i = 0; i < registros.Length; i++)
         {
             if (registros[i] == null)
             {
-                registros[i] = novaEntidadeBase;
+                registros[i] = entidade;
                 break;
             }
         }
     }
 
-    public EntidadeBase?[] SelecionarTodos()
+    public bool Editar(string idSelecionado, EntidadeBase entidade)
     {
-        return registros;
-    }
+        EntidadeBase? entidadeSelecionada = SelecionarPorId(idSelecionado);
 
-    public bool Editar(string idSelecionado, EntidadeBase novaEntidadeBase)
-    {
-        EntidadeBase? EntidadeBaseSelecionada = SelecionarPorId(idSelecionado);
-
-        if (EntidadeBaseSelecionada == null)
+        if (entidadeSelecionada == null)
             return false;
 
-        EntidadeBaseSelecionada.AtualizarRegistro(novaEntidadeBase);
+        entidadeSelecionada.AtualizarRegistro(entidade);
 
         return true;
     }
@@ -57,7 +51,7 @@ public abstract class RepositorioBase
 
     public EntidadeBase? SelecionarPorId(string idSelecionado)
     {
-        EntidadeBase? EntidadeBaseSelecionada = null;
+        EntidadeBase? entidadeSelecionada = null;
 
         for (int i = 0; i < registros.Length; i++)
         {
@@ -68,11 +62,16 @@ public abstract class RepositorioBase
 
             if (c.Id == idSelecionado)
             {
-                EntidadeBaseSelecionada = c;
+                entidadeSelecionada = c;
                 break;
             }
         }
 
-        return EntidadeBaseSelecionada;
+        return entidadeSelecionada;
+    }
+
+    public EntidadeBase?[] SelecionarTodos()
+    {
+        return registros;
     }
 }

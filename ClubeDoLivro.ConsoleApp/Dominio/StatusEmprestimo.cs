@@ -1,9 +1,8 @@
-namespace ClubeDoLivro.ConsoleApp.Dominio;
+namespace ClubeDaLeitura.ConsoleApp.Dominio;
 
 public enum StatusEmprestimo
 {
-    indefinido,
+    Indefinido,
     Aberto,
-
     Concluido
 }
