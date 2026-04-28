@@ -54,7 +54,7 @@ public class TelaCaixa : TelaBase
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
@@ -65,7 +65,7 @@ public class TelaCaixa : TelaBase
         Console.Write("Informe a etiqueta da caixa: ");
         string etiqueta = Console.ReadLine() ?? string.Empty;
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine("Selecione uma das cores válidas");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("1 - Vermelho");
@@ -75,7 +75,7 @@ public class TelaCaixa : TelaBase
         Console.WriteLine("3 - Azul");
         Console.ResetColor();
         Console.WriteLine("4 - Branco (Padrão)");
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
 
         Console.Write("Informe a cor da caixa: ");
         string codigoCor = Console.ReadLine() ?? string.Empty;

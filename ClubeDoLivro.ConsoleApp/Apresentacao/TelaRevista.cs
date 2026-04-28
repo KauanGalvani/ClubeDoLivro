@@ -66,7 +66,7 @@ public class TelaRevista : TelaBase
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
@@ -95,7 +95,7 @@ public class TelaRevista : TelaBase
 
     private string SelecionarCaixa()
     {
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
 
         Console.WriteLine(
           "{0, -7} | {1, -20} | {2, -10} | {3, -20}",
@@ -130,7 +130,7 @@ public class TelaRevista : TelaBase
 
         Console.ResetColor();
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
 
         string? idSelecionado;
 

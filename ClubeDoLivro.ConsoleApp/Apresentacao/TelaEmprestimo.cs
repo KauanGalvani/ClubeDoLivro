@@ -26,14 +26,14 @@ public class TelaEmprestimo : ITela
     public string? ObterOpcaoMenu()
     {
         // Console.Clear();
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine($"Gestão de Empréstimos");
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine($"1 - Abrir empréstimo");
         Console.WriteLine($"2 - Concluir empréstimo");
         Console.WriteLine($"3 - Visualizar empréstimos");
         Console.WriteLine("S - Voltar para o início");
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.Write("> ");
         string? opcaoMenu = Console.ReadLine()?.ToUpper();
 
@@ -50,7 +50,7 @@ public class TelaEmprestimo : ITela
 
         if (erros.Length > 0)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
 
             Console.ForegroundColor = ConsoleColor.Red;
 
@@ -62,7 +62,7 @@ public class TelaEmprestimo : ITela
             }
 
             Console.ResetColor();
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
             Console.Write("Digite ENTER para continuar...");
             Console.ReadLine();
 
@@ -83,7 +83,7 @@ public class TelaEmprestimo : ITela
 
         VisualizarTodos(deveExibirCabecalho: false);
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
 
         Emprestimo? emprestimoSelecionado = null;
 
@@ -97,7 +97,7 @@ public class TelaEmprestimo : ITela
 
         } while (emprestimoSelecionado == null);
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -10} | {3, -10} | {4, -15}",
             "Id", "Revista", "Amigo", "Abertura", "Conclusão Prev."
@@ -106,14 +106,14 @@ public class TelaEmprestimo : ITela
             "{0, -7} | {1, -15} | {2, -10} | {3, -10} | {4, -15}",
             emprestimoSelecionado.Id, emprestimoSelecionado.Revista.Titulo, emprestimoSelecionado.Amigo.Nome, emprestimoSelecionado.Abertura.ToShortDateString(), emprestimoSelecionado.ConclusaoPrevista.ToShortDateString()
         );
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
 
         Console.Write("Deseja realmente concluir o empréstimo selecionado? (s/N): ");
         string? opcaoContinuar = Console.ReadLine()?.ToUpper();
 
         if (opcaoContinuar != "S")
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
             return;
@@ -178,7 +178,7 @@ public class TelaEmprestimo : ITela
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
@@ -202,7 +202,7 @@ public class TelaEmprestimo : ITela
         } while (revista == null);
 
         // 2. Selecionar um amigo disponível
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
 
         VisualizarAmigos();
 
@@ -260,7 +260,7 @@ public class TelaEmprestimo : ITela
             Console.WriteLine();
         }
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
     }
 
     private void VisualizarAmigos()
@@ -285,24 +285,24 @@ public class TelaEmprestimo : ITela
             );
         }
 
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
     }
 
     private void ExibirCabecalho(string titulo)
     {
         Console.Clear();
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine($"Gestão de Empréstimos");
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine(titulo);
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
     }
 
     private void ExibirMensagem(string mensagem)
     {
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.WriteLine(mensagem);
-        Console.WriteLine("---------------------------------");
+        Console.WriteLine("================================");
         Console.Write("Digite ENTER para continuar...");
         Console.ReadLine();
     }

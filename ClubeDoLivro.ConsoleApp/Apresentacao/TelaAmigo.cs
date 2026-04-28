@@ -41,7 +41,7 @@ public class TelaAmigo : TelaBase
 
         if (deveExibirCabecalho)
         {
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine("================================");
             Console.WriteLine("Digite ENTER para continuar...");
             Console.ReadLine();
         }
